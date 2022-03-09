@@ -1,15 +1,31 @@
+<app-player *ngFor="let player of game.players; let i = index;" class="player-position" [ngStyle]="{'top.px':100+(i*130)}" [name]="player">
+</app-player>
+
 <div class="playground">
 
     <div class="card-stack">
-        <img [ngStyle]="{'right.px':i*5}" *ngFor="let card of [0,1,2,3]; let i = index;" src="/assets/acecards/card_cover.png">
-        <img (click)="takeCard()" class="top-card" style="right: 25px" src="/assets/acecards/card_cover.png">
-        <img (click)="takeCard()" [class.pick-card]="pickCardAnimation" *ngIf="pickCardAnimation" class="pick-card" style="right: 25px" src="/assets/acecards/ace_1.png">
+        <!-- Cards stack-->
+        <img [ngStyle]="{'right.px':i*5}" *ngFor="let card of [0,1,2,3]; let i = index;" src="/assets/cards/card_cover.png">
+        <img (click)="takeCard()" class="top-card" style="right: 25px" src="/assets/cards/card_cover.png">
+
+        <!--Stack for played Cards-->
+        <img *ngFor="let card of game.playedCards" class="played-cards" src="/assets/cards/{{ card }}.png" alt="">
+
+        <!-- Current card animation-->
+        <img (click)="takeCard()" [class.pick-card]="pickCardAnimation" *ngIf="pickCardAnimation" class="pick-card" style="right: 25px" src="/assets/cards/{{ currentCard }}.png">
         <!-- (click) = "" ist dem JS onclick gleich zu setzen
              *ngIf="" ist ähnlich einer If-Abfrage in diesem Fall wenn die Variable pickCardAnimation true ist soll diese Karte angezeigt werden.
             Die Animation läuft über Keyframes welche durch die pick-card Klasse zugewiesen wurden. 
             Die Klasse pick-card wird nur gegeben wenn pickCardAnimation true ist. Dies passiert durch das (click) klicken auf die Karte. 
             [class.pick-card]="pickCardAnimation" das ist der Befehl dafür. 
-            -->
+            
+        Sie wird an der untersten Stelle eingefügt damit sie drüber fliegt. Wir malen von unten nach oben. -->
+
+
     </div>
 
 </div>
+
+<button mat-fab color="primary" class="btn-add" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+  </button>

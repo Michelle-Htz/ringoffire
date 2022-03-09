@@ -1,0 +1,19 @@
+.player {
+    display: flex;
+    align-items: center;
+    background-color: aquamarine;
+    width: 300px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    span {
+        font-size: 24px;
+        padding: 5px;
+    }
+    img {
+        padding: 5px;
+        height: 100px;
+        width: 100px;
+        object-fit: cover;
+        border-radius: 100%;
+    }
+}
