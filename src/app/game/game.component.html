@@ -1,1 +1,15 @@
-<p>game works!</p>
+<div class="playground">
+
+    <div class="card-stack">
+        <img [ngStyle]="{'right.px':i*5}" *ngFor="let card of [0,1,2,3]; let i = index;" src="/assets/acecards/card_cover.png">
+        <img (click)="takeCard()" class="top-card" style="right: 25px" src="/assets/acecards/card_cover.png">
+        <img (click)="takeCard()" [class.pick-card]="pickCardAnimation" *ngIf="pickCardAnimation" class="pick-card" style="right: 25px" src="/assets/acecards/ace_1.png">
+        <!-- (click) = "" ist dem JS onclick gleich zu setzen
+             *ngIf="" ist ähnlich einer If-Abfrage in diesem Fall wenn die Variable pickCardAnimation true ist soll diese Karte angezeigt werden.
+            Die Animation läuft über Keyframes welche durch die pick-card Klasse zugewiesen wurden. 
+            Die Klasse pick-card wird nur gegeben wenn pickCardAnimation true ist. Dies passiert durch das (click) klicken auf die Karte. 
+            [class.pick-card]="pickCardAnimation" das ist der Befehl dafür. 
+            -->
+    </div>
+
+</div>
